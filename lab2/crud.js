@@ -21,7 +21,7 @@ const addToCart = async (item) => {
     productFound.qty == item.qty;
     console.log("product in cart, quantity updated");
   }else{
-    product.push(item);
+    products.push(item);
     console.log("product added successfully");
   }
   products.push(item);
