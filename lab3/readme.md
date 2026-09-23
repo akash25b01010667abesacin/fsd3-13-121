@@ -79,3 +79,9 @@ is used to tell the clinet , the tyo=pe of data by the server it may be html fil
 4. text/css -> stylesheet
 5. application/auth -> for tokens 
    the headers can be set by  res object at server side by two ways
+
+
+Get - no parameter pass to the server when we receive all item 
+Post - to add record we pass the value from body section in json format of api tester (echo api)
+Delete - to delete any product we pass parameter i.e. id of product from url
+Put/Patch - we pass id from url and data to update from body 
