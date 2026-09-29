@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Aether Mobility & Aether Phone X</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0F19',
+                        'dark-card': 'rgba(18, 24, 38, 0.75)',
+                        'accent-cyan': '#00F0FF',
+                        'accent-violet': '#8A2BE2',
+                        'accent-blue': '#3B82F6',
+                        'accent-emerald': '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 6s infinite alternate',
+                        'float': 'float 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { opacity: '0.25', transform: 'scale(0.95)' },
+                            '100%': { opacity: '0.6', transform: 'scale(1.05)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0B0F19;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(18, 24, 38, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.35);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .neon-text-glow {
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.4), 0 0 35px rgba(138, 43, 226, 0.25);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyan-500 selection:text-black">
+
+    <!-- Background Particle Canvas -->
+    <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-cyan via-accent-violet to-accent-blue p-[1px] flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                        <div class="w-full h-full bg-dark rounded-[11px] flex items-center justify-center">
+                            <span class="font-display font-extrabold text-xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500">Æ</span>
+                        </div>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-widest text-white">AETHER<span class="text-accent-cyan font-light"> MOBILITY</span></span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="index.html" class="text-gray-300 hover:text-accent-cyan transition-colors">Home</a>
+                    <a href="#about" class="text-accent-cyan font-semibold border-b-2 border-accent-cyan pb-1">About Us</a>
+                    <a href="#values" class="text-gray-300 hover:text-accent-cyan transition-colors">Pillars</a>
+                    <a href="#journey" class="text-gray-300 hover:text-accent-cyan transition-colors">Journey</a>
+                    <a href="#leadership" class="text-gray-300 hover:text-accent-cyan transition-colors">Leadership</a>
+                    <a href="#careers" class="text-gray-300 hover:text-accent-cyan transition-colors">Careers</a>
+                </nav>
+
+                <!-- Navigation CTAs -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <a href="index.html#customizer" class="relative group overflow-hidden rounded-full p-[1px] font-semibold text-sm">
+                        <span class="absolute inset-0 bg-gradient-to-r from-accent-cyan via-accent-violet to-blue-500 rounded-full group-hover:opacity-100 transition-opacity"></span>
+                        <span class="relative px-6 py-2.5 rounded-full bg-dark flex items-center space-x-2 text-white group-hover:bg-opacity-80 transition-all">
+                            <span>Pre-Order X</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-cyan group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="index.html" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Home</a>
+            <a href="#about" class="block py-2 text-accent-cyan font-medium">About Us</a>
+            <a href="#values" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Pillars</a>
+            <a href="#journey" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Journey</a>
+            <a href="#leadership" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Leadership</a>
+            <a href="#careers" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Careers</a>
+            <div class="pt-4 border-t border-white/10">
+                <a href="index.html#customizer" class="block w-full text-center py-3 rounded-xl bg-gradient-to-r from-accent-cyan to-accent-violet text-black font-bold">
+                    Pre-Order Phone X
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="relative pt-36 pb-20 overflow-hidden z-10 min-h-[75vh] flex items-center">
+        <!-- Ambient Glowing Orbs -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-violet/15 rounded-full blur-[140px] pointer-events-none animate-pulse-glow"></div>
+        <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-accent-cyan/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border-accent-cyan/30 text-accent-cyan text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-accent-cyan animate-ping"></span>
+                    <span>The Aether Story</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold text-white tracking-tight leading-tight">
+                    Redefining <br class="hidden sm:inline"/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-blue-200 to-accent-violet neon-text-glow">Mobile Intelligence</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto">
+                    Founded in Silicon Valley and Zurich, Aether Mobility was born from a unified conviction: smartphones reached a plateau of incrementalism. We design hardware and AI in unison to restore wonder, power, and genuine privacy to personal technology.
+                </p>
+
+                <!-- Key Impact Highlights Bar -->
+                <div class="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto border-t border-white/10 text-center">
+                    <div class="space-y-1">
+                        <p class="text-xs text-gray-400 font-mono uppercase">HQ Locations</p>
+                        <p class="text-lg font-bold text-white font-display">SF & Zurich</p>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-xs text-gray-400 font-mono uppercase">Global Team</p>
+                        <p class="text-lg font-bold text-white font-display">420+ Innovators</p>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-xs text-gray-400 font-mono uppercase">Patents Awarded</p>
+                        <p class="text-lg font-bold text-white font-display">185+ Issued</p>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-xs text-gray-400 font-mono uppercase">Recycled Alloys</p>
+                        <p class="text-lg font-bold text-white font-display">100% Grade 5</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 relative z-10 border-y border-white/10 bg-dark/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" id="stats-container">
+                
+                <div class="glass-card p-6 rounded-3xl space-y-2">
+                    <i data-lucide="cpu" class="w-8 h-8 text-accent-cyan mx-auto mb-2"></i>
+                    <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white counter" data-target="40">0</h3>
+                    <p class="text-xs text-accent-cyan font-mono font-semibold uppercase">TOPS Neural Power</p>
+                    <p class="text-[11px] text-gray-400">On-device local processing</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl space-y-2">
+                    <i data-lucide="leaf" class="w-8 h-8 text-emerald-400 mx-auto mb-2"></i>
+                    <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white counter" data-target="12500">0</h3>
+                    <p class="text-xs text-emerald-400 font-mono font-semibold uppercase">Tons CO2 Reduced</p>
+                    <p class="text-[11px] text-gray-400">Solar supply chain offset</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl space-y-2">
+                    <i data-lucide="award" class="w-8 h-8 text-accent-violet mx-auto mb-2"></i>
+                    <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white counter" data-target="185">0</h3>
+                    <p class="text-xs text-accent-violet font-mono font-semibold uppercase">Hardware Patents</p>
+                    <p class="text-[11px] text-gray-400">Photonic & thermal tech</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl space-y-2">
+                    <i data-lucide="globe" class="w-8 h-8 text-blue-400 mx-auto mb-2"></i>
+                    <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white counter" data-target="82">0</h3>
+                    <p class="text-xs text-blue-400 font-mono font-semibold uppercase">Countries Reserved</p>
+                    <p class="text-[11px] text-gray-400">Global Aether Phone X launch</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-mono font-bold text-accent-cyan uppercase tracking-widest">Our DNA</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Engineering Pillars</h2>
+                <p class="text-gray-400">Four foundational principles guiding every hardware layout, algorithm, and supply chain choice.</p>
+            </div>
+
+            <!-- Value Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Pillar 1 -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-accent-cyan">
+                            <i data-lucide="zap" class="w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500 font-bold">PILLAR 01</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-3">Zero-Compromise Hardware</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        We reject planned obsolescence. Every component—from our sculpted Grade 5 Titanium frames to our solid-state battery cells—is built for extreme endurance and longevity.
+                    </p>
+                    <ul class="space-y-2 text-xs font-mono text-cyan-300">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-cyan"></i><span>100% Titanium chassis machining</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-cyan"></i><span>Toolless battery repairability modularity</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-accent-violet">
+                            <i data-lucide="cpu" class="w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500 font-bold">PILLAR 02</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-3">On-Device Quantum AI</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Artificial intelligence should serve you without surrendering your private life to remote cloud servers. AetherOS runs 40 TOPS of neural processing locally on your chip.
+                    </p>
+                    <ul class="space-y-2 text-xs font-mono text-violet-300">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-violet"></i><span>Zero telemetry cloud offloading</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-violet"></i><span>Sub-10ms real-time neural photo engine</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                            <i data-lucide="leaf" class="w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500 font-bold">PILLAR 03</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-3">Sustainable Engineering</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Progress cannot come at the expense of our planet. Our manufacturing facilities operate on 100% renewable energy, utilizing 98% recycled metals and closed-loop water systems.
+                    </p>
+                    <ul class="space-y-2 text-xs font-mono text-emerald-300">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>100% plastic-free soy packaging</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>Carbon-negative logistics network</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                            <i data-lucide="shield-lock" class="w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500 font-bold">PILLAR 04</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-3">Privacy-First Architecture</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Your phone is an extension of your mind. We implement hardware-enforced kill switches and biometric enclaves that keep your biometric data encrypted at the silicon level.
+                    </p>
+                    <ul class="space-y-2 text-xs font-mono text-blue-300">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i><span>Physical hardware camera & mic switches</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i><span>Zero ad tracking or data brokerage</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="journey" class="py-24 relative z-10 bg-dark/60 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-mono font-bold text-accent-cyan uppercase tracking-widest">Chronology</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Our Journey</h2>
+                <p class="text-gray-400">From a secret hardware lab in Zurich to global mobile benchmark.</p>
+            </div>
+
+            <!-- Timeline Component -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Vertical Line -->
+                <div class="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-cyan via-accent-violet to-emerald-400 -translate-x-1/2"></div>
+
+                <div class="space-y-12 relative">
+                    
+                    <!-- Milestone 1: 2022 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group">
+                        <div class="flex items-center w-full sm:w-1/2 sm:pr-8 mb-4 sm:mb-0 justify-start sm:justify-end">
+                            <div class="glass-card p-6 rounded-3xl w-full text-left sm:text-right border-white/10 group-hover:border-accent-cyan transition-colors">
+                                <span class="text-xs font-mono text-accent-cyan font-bold">Q1 2022</span>
+                                <h3 class="text-xl font-display font-bold text-white mt-1">Founding in Zurich</h3>
+                                <p class="text-gray-400 text-sm mt-2">Former Apple and ASML engineers convene to conceptualize a smartphone built around local neural acceleration and zero thermal throttling.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-dark border-2 border-accent-cyan flex items-center justify-center text-accent-cyan z-20 shadow-lg shadow-cyan-500/50">
+                            <i data-lucide="compass" class="w-4 h-4"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pl-8 hidden sm:block"></div>
+                    </div>
+
+                    <!-- Milestone 2: 2023 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group">
+                        <div class="w-full sm:w-1/2 sm:pr-8 hidden sm:block"></div>
+                        <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-dark border-2 border-accent-violet flex items-center justify-center text-accent-violet z-20 shadow-lg shadow-violet-500/50">
+                            <i data-lucide="cpu" class="w-4 h-4"></i>
+                        </div>
+                        <div class="flex items-center w-full sm:w-1/2 sm:pl-8 pl-10">
+                            <div class="glass-card p-6 rounded-3xl w-full text-left border-white/10 group-hover:border-accent-violet transition-colors">
+                                <span class="text-xs font-mono text-accent-violet font-bold">Q3 2023</span>
+                                <h3 class="text-xl font-display font-bold text-white mt-1">Quantum Silicon Tape-Out</h3>
+                                <p class="text-gray-400 text-sm mt-2">Successfully taped out our proprietary 3nm Quantum NPU silicon architecture, achieving 40 TOPS at under 2.5 watts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3: 2024 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group">
+                        <div class="flex items-center w-full sm:w-1/2 sm:pr-8 mb-4 sm:mb-0 justify-start sm:justify-end pl-10 sm:pl-0">
+                            <div class="glass-card p-6 rounded-3xl w-full text-left sm:text-right border-white/10 group-hover:border-blue-400 transition-colors">
+                                <span class="text-xs font-mono text-blue-400 font-bold">Q2 2024</span>
+                                <h3 class="text-xl font-display font-bold text-white mt-1">$120M Series B Funding</h3>
+                                <p class="text-gray-400 text-sm mt-2">Backed by leading European and US tech founders to scale sustainable manufacturing cleanrooms and recruit world-class talent.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-dark border-2 border-blue-400 flex items-center justify-center text-blue-400 z-20 shadow-lg shadow-blue-500/50">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pl-8 hidden sm:block"></div>
+                    </div>
+
+                    <!-- Milestone 4: 2026 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group">
+                        <div class="w-full sm:w-1/2 sm:pr-8 hidden sm:block"></div>
+                        <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-dark border-2 border-emerald-400 flex items-center justify-center text-emerald-400 z-20 shadow-lg shadow-emerald-500/50">
+                            <i data-lucide="smartphone" class="w-4 h-4"></i>
+                        </div>
+                        <div class="flex items-center w-full sm:w-1/2 sm:pl-8 pl-10">
+                            <div class="glass-card p-6 rounded-3xl w-full text-left border-white/10 group-hover:border-emerald-400 transition-colors">
+                                <span class="text-xs font-mono text-emerald-400 font-bold">2026 KEYNOTE</span>
+                                <h3 class="text-xl font-display font-bold text-white mt-1">Aether Phone X Launch</h3>
+                                <p class="text-gray-400 text-sm mt-2">Public unveiling of Aether Phone X. Over 100,000 priority reservations recorded within the first 48 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leadership" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-mono font-bold text-accent-cyan uppercase tracking-widest">Visionaries</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Leadership Team</h2>
+                <p class="text-gray-400">Pioneers across silicon engineering, computational optics, and industrial aesthetic design.</p>
+            </div>
+
+            <!-- Team Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Founder 1 -->
+                <div class="glass-card rounded-3xl p-6 text-center space-y-4 relative group cursor-pointer" onclick="openBioModal('dr-elena-vance')">
+                    <div class="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-accent-cyan p-1">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Dr. Elena Vance" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white font-display">Dr. Elena Vance</h3>
+                        <p class="text-xs text-accent-cyan font-mono mt-0.5">Co-Founder & CEO</p>
+                        <p class="text-xs text-gray-400 mt-2">Former Head of Silicon Architecture at ETH Zurich.</p>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full glass-card text-xs text-gray-300 group-hover:text-white group-hover:border-accent-cyan transition-colors">View Bio</button>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="glass-card rounded-3xl p-6 text-center space-y-4 relative group cursor-pointer" onclick="openBioModal('marcus-chen')">
+                    <div class="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-accent-violet p-1">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Marcus Chen" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white font-display">Marcus Chen</h3>
+                        <p class="text-xs text-accent-violet font-mono mt-0.5">Co-Founder & Chief Product Officer</p>
+                        <p class="text-xs text-gray-400 mt-2">Ex-Design Lead for iconic European hardware studios.</p>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full glass-card text-xs text-gray-300 group-hover:text-white group-hover:border-accent-violet transition-colors">View Bio</button>
+                </div>
+
+                <!-- Founder 3 -->
+                <div class="glass-card rounded-3xl p-6 text-center space-y-4 relative group cursor-pointer" onclick="openBioModal('sarah-jenkins')">
+                    <div class="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-emerald-400 p-1">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Sarah Jenkins" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white font-display">Sarah Jenkins</h3>
+                        <p class="text-xs text-emerald-400 font-mono mt-0.5">VP of Neural Optics</p>
+                        <p class="text-xs text-gray-400 mt-2">Pioneered 200MP computational photonic engines.</p>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full glass-card text-xs text-gray-300 group-hover:text-white group-hover:border-emerald-400 transition-colors">View Bio</button>
+                </div>
+
+                <!-- Founder 4 -->
+                <div class="glass-card rounded-3xl p-6 text-center space-y-4 relative group cursor-pointer" onclick="openBioModal('dr-arjun-nair')">
+                    <div class="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-blue-400 p-1">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Dr. Arjun Nair" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white font-display">Dr. Arjun Nair</h3>
+                        <p class="text-xs text-blue-400 font-mono mt-0.5">Head of On-Device AI</p>
+                        <p class="text-xs text-gray-400 mt-2">Pioneer in 3nm low-power neural matrix multiplication.</p>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full glass-card text-xs text-gray-300 group-hover:text-white group-hover:border-blue-400 transition-colors">View Bio</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 relative z-10 bg-dark/60 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-mono font-bold text-accent-cyan uppercase tracking-widest">Inspirations & Innovation Labs</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Inside Aether Studios</h2>
+                <p class="text-gray-400">Where aerospace materials, neural algorithms, and industrial design converge.</p>
+            </div>
+
+            <!-- Gallery Filter Buttons -->
+            <div class="flex overflow-x-auto space-x-3 pb-2 justify-center no-scrollbar">
+                <button onclick="filterGallery('all')" class="gallery-btn active px-6 py-2.5 rounded-full text-xs font-bold font-mono transition-all bg-gradient-to-r from-accent-cyan to-accent-blue text-black">ALL LABS</button>
+                <button onclick="filterGallery('design')" class="gallery-btn px-6 py-2.5 rounded-full text-xs font-bold font-mono transition-all glass-card text-gray-300 hover:text-white">DESIGN STUDIO</button>
+                <button onclick="filterGallery('cleanroom')" class="gallery-btn px-6 py-2.5 rounded-full text-xs font-bold font-mono transition-all glass-card text-gray-300 hover:text-white">SILICON CLEANROOM</button>
+                <button onclick="filterGallery('sustainability')" class="gallery-btn px-6 py-2.5 rounded-full text-xs font-bold font-mono transition-all glass-card text-gray-300 hover:text-white">ECO CAMPUS</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gallery-grid">
+                
+                <div class="gallery-item design glass-card rounded-3xl overflow-hidden h-64 relative group">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Design Lab" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-mono text-accent-cyan uppercase">Zurich, Switzerland</span>
+                        <h4 class="text-lg font-bold text-white">Titanium Sculpting Studio</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item cleanroom glass-card rounded-3xl overflow-hidden h-64 relative group">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Silicon Cleanroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-mono text-accent-violet uppercase">Eindhoven, Netherlands</span>
+                        <h4 class="text-lg font-bold text-white">ISO Class 1 Nanofabrication</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item sustainability glass-card rounded-3xl overflow-hidden h-64 relative group">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Green Campus" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-mono text-emerald-400 uppercase">San Francisco, USA</span>
+                        <h4 class="text-lg font-bold text-white">Solar Powered R&D Hub</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="careers" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-mono font-bold text-accent-cyan uppercase tracking-widest">Join The Team</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Shape The Next Era</h2>
+                <p class="text-gray-400">We are seeking world-class engineers, designers, and visionaries to join our global team.</p>
+            </div>
+
+            <!-- Job Filters -->
+            <div class="flex overflow-x-auto space-x-3 pb-2 justify-center no-scrollbar">
+                <button onclick="filterJobs('all')" class="job-btn active px-5 py-2 rounded-full text-xs font-mono font-bold transition-all bg-accent-cyan text-black">ALL ROLES</button>
+                <button onclick="filterJobs('silicon')" class="job-btn px-5 py-2 rounded-full text-xs font-mono font-bold transition-all glass-card text-gray-300 hover:text-white">SILICON & HARDWARE</button>
+                <button onclick="filterJobs('ai')" class="job-btn px-5 py-2 rounded-full text-xs font-mono font-bold transition-all glass-card text-gray-300 hover:text-white">AI & SOFTWARE</button>
+                <button onclick="filterJobs('design')" class="job-btn px-5 py-2 rounded-full text-xs font-mono font-bold transition-all glass-card text-gray-300 hover:text-white">INDUSTRIAL DESIGN</button>
+            </div>
+
+            <!-- Job Openings List -->
+            <div class="max-w-4xl mx-auto space-y-4" id="jobs-container">
+                
+                <div class="job-item silicon glass-card p-6 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-mono text-accent-cyan uppercase tracking-widest">Zurich · Full-Time</span>
+                        <h4 class="text-lg font-bold text-white">Senior 3nm Silicon Thermal Architect</h4>
+                        <p class="text-xs text-gray-400">Lead next-gen solid-state heat dissipating architectures for Quantum chips.</p>
+                    </div>
+                    <button onclick="openApplyModal('Senior 3nm Silicon Thermal Architect')" class="px-6 py-2.5 rounded-full bg-accent-cyan/10 border border-accent-cyan/40 text-accent-cyan text-xs font-bold hover:bg-accent-cyan hover:text-black transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+                <div class="job-item ai glass-card p-6 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-mono text-accent-violet uppercase tracking-widest">San Francisco · Remote Hybrid</span>
+                        <h4 class="text-lg font-bold text-white">Staff Computational Optics Engineer</h4>
+                        <p class="text-xs text-gray-400">Optimize 200MP raw image photonic neural processing algorithms.</p>
+                    </div>
+                    <button onclick="openApplyModal('Staff Computational Optics Engineer')" class="px-6 py-2.5 rounded-full bg-accent-violet/10 border border-accent-violet/40 text-accent-violet text-xs font-bold hover:bg-accent-violet hover:text-white transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+                <div class="job-item design glass-card p-6 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">Zurich · Full-Time</span>
+                        <h4 class="text-lg font-bold text-white">Lead Industrial Material Scientist</h4>
+                        <p class="text-xs text-gray-400">Pioneer Grade 5 Titanium circular recycling and ceramic composite structures.</p>
+                    </div>
+                    <button onclick="openApplyModal('Lead Industrial Material Scientist')" class="px-6 py-2.5 rounded-full bg-emerald-400/10 border border-emerald-400/40 text-emerald-400 text-xs font-bold hover:bg-emerald-400 hover:text-black transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-white/10 py-16 relative z-10 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-accent-cyan to-accent-violet p-[1px] flex items-center justify-center">
+                            <div class="w-full h-full bg-dark rounded-[7px] flex items-center justify-center">
+                                <span class="font-display font-extrabold text-sm text-white">Æ</span>
+                            </div>
+                        </div>
+                        <span class="font-display font-bold text-xl text-white tracking-widest">AETHER</span>
+                    </div>
+                    <p class="text-gray-400 max-w-sm">
+                        Building the next generation of mobile intelligence with uncompromising hardware, on-device AI, and sustainable craftsmanship.
+                    </p>
+                </div>
+
+                <!-- Navigation Columns -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-xs uppercase font-mono tracking-wider">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-accent-cyan transition-colors">About Us</a></li>
+                        <li><a href="#journey" class="hover:text-accent-cyan transition-colors">Our Journey</a></li>
+                        <li><a href="#leadership" class="hover:text-accent-cyan transition-colors">Leadership</a></li>
+                        <li><a href="#careers" class="hover:text-accent-cyan transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-xs uppercase font-mono tracking-wider">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-accent-cyan transition-colors">Aether Phone X</a></li>
+                        <li><a href="index.html#camera" class="hover:text-accent-cyan transition-colors">Photonic System</a></li>
+                        <li><a href="index.html#specs" class="hover:text-accent-cyan transition-colors">Quantum NPU</a></li>
+                        <li><a href="index.html#customizer" class="hover:text-accent-cyan transition-colors">Pre-Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-xs uppercase font-mono tracking-wider">Legal & Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Press Inquiries</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Security Disclosure</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <p class="text-xs text-gray-500">© 2026 Aether Mobility Technologies Inc. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Founder Bio Modal -->
+    <div id="bio-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card rounded-3xl p-8 max-w-lg w-full border-white/10 relative space-y-6">
+            <button onclick="closeModal('bio-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="text-center space-y-3">
+                <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-accent-cyan p-1">
+                    <img id="modal-bio-img" src="" alt="Bio Avatar" class="w-full h-full object-cover rounded-full" />
+                </div>
+                <h3 id="modal-bio-name" class="text-2xl font-display font-bold text-white"></h3>
+                <p id="modal-bio-role" class="text-xs font-mono text-accent-cyan"></p>
+                <p id="modal-bio-text" class="text-sm text-gray-300 leading-relaxed pt-2"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Application Modal -->
+    <div id="apply-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card rounded-3xl p-8 max-w-lg w-full border-white/10 relative space-y-6">
+            <button onclick="closeModal('apply-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="space-y-2">
+                <span class="text-xs font-mono text-accent-cyan uppercase">Application</span>
+                <h3 id="apply-role-title" class="text-2xl font-display font-bold text-white"></h3>
+                <p class="text-xs text-gray-400">Join our team in pushing the boundaries of technology.</p>
+            </div>
+
+            <form onsubmit="handleApplySubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Full Name</label>
+                    <input type="text" required placeholder="Elena Vance" class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-white/10 text-white focus:outline-none focus:border-accent-cyan text-sm" />
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Email Address</label>
+                    <input type="email" required placeholder="elena@aether.io" class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-white/10 text-white focus:outline-none focus:border-accent-cyan text-sm" />
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Portfolio or GitHub URL</label>
+                    <input type="url" required placeholder="https://github.com/..." class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-white/10 text-white focus:outline-none focus:border-accent-cyan text-sm" />
+                </div>
+                <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-accent-cyan via-accent-blue to-accent-violet text-black font-bold text-sm hover:opacity-90 transition-opacity">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile Nav Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Helpers
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Leader Bio Modal Data
+        const bios = {
+            'dr-elena-vance': {
+                name: 'Dr. Elena Vance',
+                role: 'Co-Founder & Chief Executive Officer',
+                img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+                text: 'Elena holds a PhD in Quantum Nano-silicon from ETH Zurich. Prior to founding Aether Mobility, she led advanced hardware architectures at leading semiconductor firms. She believes privacy and machine learning can harmoniously coexist through zero-cloud local computing.'
+            },
+            'marcus-chen': {
+                name: 'Marcus Chen',
+                role: 'Co-Founder & Chief Product Officer',
+                img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+                text: 'Marcus spent 12 years directing award-winning industrial consumer hardware studios across Scandinavia. His design philosophy focuses on tactile luxury, sustainable Grade 5 Titanium alloys, and reduction of cognitive friction.'
+            },
+            'sarah-jenkins': {
+                name: 'Sarah Jenkins',
+                role: 'VP of Neural Optics',
+                img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80',
+                text: 'Sarah revolutionized computational photography by developing the world’s first 200MP raw neural photonic pipeline, enabling sub-millisecond multi-frame synthesis at low power.'
+            },
+            'dr-arjun-nair': {
+                name: 'Dr. Arjun Nair',
+                role: 'Head of On-Device AI',
+                img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+                text: 'Arjun is a published researcher in low-precision matrix quantization. At Aether, he designed the 32-core NPU matrix architecture capable of running 40 TOPS directly on the device frame.'
+            }
+        };
+
+        function openBioModal(key) {
+            const data = bios[key];
+            if (!data) return;
+            document.getElementById('modal-bio-name').textContent = data.name;
+            document.getElementById('modal-bio-role').textContent = data.role;
+            document.getElementById('modal-bio-text').textContent = data.text;
+            document.getElementById('modal-bio-img').src = data.img;
+            openModal('bio-modal');
+        }
+
+        // Job Modal Helper
+        function openApplyModal(role) {
+            document.getElementById('apply-role-title').textContent = role;
+            openModal('apply-modal');
+        }
+
+        function handleApplySubmit(e) {
+            e.preventDefault();
+            alert('🎉 Application submitted successfully! Our recruiting team will review your credentials within 48 hours.');
+            closeModal('apply-modal');
+        }
+
+        // Gallery Filter Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            const btns = document.querySelectorAll('.gallery-btn');
+            btns.forEach(b => {
+                b.classList.remove('bg-gradient-to-r', 'from-accent-cyan', 'to-accent-blue', 'text-black');
+                b.classList.add('glass-card', 'text-gray-300');
+            });
+            event.currentTarget.classList.remove('glass-card', 'text-gray-300');
+            event.currentTarget.classList.add('bg-gradient-to-r', 'from-accent-cyan', 'to-accent-blue', 'text-black');
+        }
+
+        // Job Filter Logic
+        function filterJobs(category) {
+            const items = document.querySelectorAll('.job-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            const btns = document.querySelectorAll('.job-btn');
+            btns.forEach(b => {
+                b.classList.remove('bg-accent-cyan', 'text-black');
+                b.classList.add('glass-card', 'text-gray-300');
+            });
+            event.currentTarget.classList.remove('glass-card', 'text-gray-300');
+            event.currentTarget.classList.add('bg-accent-cyan', 'text-black');
+        }
+
+        // Animated Number Counters on Scroll
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const stats = document.getElementById('stats-container');
+            if (!stats) return;
+            const pos = stats.getBoundingClientRect().top;
+            if (pos < window.innerHeight && !animated) {
+                animated = true;
+                const counters = document.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let count = 0;
+                    const speed = target / 50;
+                    const updateCount = () => {
+                        count += speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count).toLocaleString();
+                            setTimeout(updateCount, 30);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    };
+                    updateCount();
+                });
+            }
+        });
+
+        // Ambient Background Particles
+        const canvas = document.getElementById('ambient-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.4 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 45; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.onload = function() {
+            animateCanvas();
+        }
+    </script>
+</body>
+</html>

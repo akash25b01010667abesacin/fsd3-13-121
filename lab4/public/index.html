@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aether Phone X - The Next Evolution of Mobile Technology</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#090A0F',
+                        'dark-card': 'rgba(18, 20, 29, 0.7)',
+                        'accent-cyan': '#00F0FF',
+                        'accent-violet': '#8A2BE2',
+                        'accent-blue': '#3B82F6',
+                        'accent-magenta': '#FF007A'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 4s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { opacity: '0.3', transform: 'scale(0.98)' },
+                            '100%': { opacity: '0.7', transform: 'scale(1.02)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-15px) rotate(1deg)' }
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Customizations & Glassmorphic Utilities */
+        body {
+            background-color: #090A0F;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(18, 20, 30, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .neon-text-glow {
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(138, 43, 226, 0.3);
+        }
+
+        .neon-border-glow {
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+        }
+
+        /* 3D Phone Model Styles */
+        .phone-container {
+            perspective: 1200px;
+        }
+
+        .phone-body {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 240, 255, 0.2);
+        }
+
+        .screen-glare {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%);
+        }
+
+        /* Hide scrollbars for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyan-500 selection:text-black">
+
+    <!-- Ambient Dynamic Background Canvas -->
+    <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Glassmorphic Sticky Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-cyan via-accent-violet to-accent-magenta p-[1px] flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                        <div class="w-full h-full bg-dark rounded-[11px] flex items-center justify-center">
+                            <span class="font-display font-extrabold text-xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500">Æ</span>
+                        </div>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-widest text-white">AETHER<span class="text-accent-cyan font-light"> X</span></span>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#features" class="text-gray-300 hover:text-accent-cyan transition-colors duration-200">Innovation</a>
+                    <a href="#camera" class="text-gray-300 hover:text-accent-cyan transition-colors duration-200">Optics</a>
+                    <a href="#specs" class="text-gray-300 hover:text-accent-cyan transition-colors duration-200">Tech Specs</a>
+                    <a href="#customizer" class="text-gray-300 hover:text-accent-cyan transition-colors duration-200">Configure</a>
+                    <a href="#reviews" class="text-gray-300 hover:text-accent-cyan transition-colors duration-200">Praise</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <a href="#customizer" class="relative group overflow-hidden rounded-full p-[1px] font-semibold text-sm">
+                        <span class="absolute inset-0 bg-gradient-to-r from-accent-cyan via-accent-violet to-accent-magenta rounded-full group-hover:opacity-100 transition-opacity"></span>
+                        <span class="relative px-6 py-2.5 rounded-full bg-dark flex items-center space-x-2 text-white group-hover:bg-opacity-80 transition-all duration-300">
+                            <span>Pre-Order</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-cyan group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="#features" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Innovation</a>
+            <a href="#camera" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Optics</a>
+            <a href="#specs" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Tech Specs</a>
+            <a href="#customizer" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Configure</a>
+            <a href="#reviews" class="block py-2 text-gray-300 hover:text-accent-cyan font-medium">Praise</a>
+            <div class="pt-4 border-t border-white/10">
+                <a href="#customizer" class="block w-full text-center py-3 rounded-xl bg-gradient-to-r from-accent-cyan to-accent-violet text-black font-bold">
+                    Pre-Order Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden z-10">
+        <!-- Ambient Background Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-violet/20 rounded-full blur-[140px] pointer-events-none animate-pulse-glow"></div>
+        <div class="absolute bottom-10 left-1/3 w-[400px] h-[400px] bg-accent-cyan/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column: Headline & CTAs -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-8 z-20">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border-accent-cyan/30 text-accent-cyan text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-accent-cyan animate-ping"></span>
+                        <span>Keynote Unveiling 2026</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-tight">
+                        The Next Evolution of <br class="hidden sm:inline" />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-cyan-200 to-accent-violet neon-text-glow">Mobile Intelligence</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Engineered with Grade 5 Titanium, powered by the 3nm Quantum Bionic Neural Engine, and featuring a revolutionary 200MP Quad-Lens photonic array.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#customizer" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-accent-cyan via-blue-500 to-accent-violet text-black font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:-translate-y-1 text-center">
+                            Pre-Order — From $999
+                        </a>
+                        <button onclick="openModal('keynote-modal')" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card hover:bg-white/10 text-white font-semibold text-lg flex items-center justify-center space-x-3 transition-all duration-300">
+                            <i data-lucide="play-circle" class="w-6 h-6 text-accent-cyan"></i>
+                            <span>Watch Keynote</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick Spec Badges -->
+                    <div class="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center lg:text-left">
+                        <div class="space-y-1">
+                            <p class="text-xs text-gray-400 uppercase tracking-widest font-mono">Chipset</p>
+                            <p class="text-lg font-bold text-white font-display">Quantum 3nm</p>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-xs text-gray-400 uppercase tracking-widest font-mono">Display</p>
+                            <p class="text-lg font-bold text-white font-display">3000 Nits LTPO</p>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-xs text-gray-400 uppercase tracking-widest font-mono">Camera</p>
+                            <p class="text-lg font-bold text-white font-display">200MP Quad</p>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-xs text-gray-400 uppercase tracking-widest font-mono">Charging</p>
+                            <p class="text-lg font-bold text-white font-display">120W Hyper</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Interactive 3D CSS Smartphone Showcase -->
+                <div class="lg:col-span-5 flex justify-center items-center relative phone-container min-h-[500px]">
+                    <!-- Interactive Floating Phone Mockup -->
+                    <div id="interactive-phone" class="phone-body relative w-[280px] sm:w-[320px] h-[570px] sm:h-[650px] bg-gray-900 rounded-[50px] p-3 border-4 border-gray-700/60 transition-transform duration-200 ease-out cursor-grab active:cursor-grabbing animate-float">
+                        
+                        <!-- Side Buttons -->
+                        <div class="absolute -left-[7px] top-28 w-[4px] h-10 bg-gray-700 rounded-l-sm"></div>
+                        <div class="absolute -left-[7px] top-42 w-[4px] h-14 bg-gray-700 rounded-l-sm"></div>
+                        <div class="absolute -right-[7px] top-36 w-[4px] h-16 bg-gray-700 rounded-r-sm"></div>
+
+                        <!-- Inner Screen Frame -->
+                        <div class="relative w-full h-full bg-black rounded-[40px] overflow-hidden flex flex-col justify-between border border-white/10">
+                            
+                            <!-- Dynamic Island / Sensor Notch -->
+                            <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-30 flex items-center justify-between px-3 border border-white/10">
+                                <div class="w-3 h-3 rounded-full bg-gray-900 border border-gray-700 flex items-center justify-center">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-blue-900"></div>
+                                </div>
+                                <div class="w-2 h-2 rounded-full bg-green-500/80 animate-pulse"></div>
+                            </div>
+
+                            <!-- Screen Glare Overlay -->
+                            <div class="absolute inset-0 screen-glare pointer-events-none z-20"></div>
+
+                            <!-- Phone Wallpaper & Dynamic UI Preview -->
+                            <div id="phone-screen-bg" class="absolute inset-0 bg-gradient-to-br from-violet-950 via-dark to-cyan-950 transition-colors duration-700 flex flex-col justify-between p-6 pt-14">
+                                <!-- Lockscreen Header -->
+                                <div class="text-center space-y-1 pt-4">
+                                    <p class="text-xs font-mono text-cyan-300 uppercase tracking-widest">AetherOS 4.0</p>
+                                    <h3 class="text-5xl font-display font-light text-white tracking-tighter" id="clock-display">09:41</h3>
+                                    <p class="text-xs text-gray-300 font-medium">Tuesday, September 29</p>
+                                </div>
+
+                                <!-- Dynamic Interactive Widgets on Display -->
+                                <div class="space-y-3 z-10">
+                                    <!-- Widget 1: Quantum AI Assistant -->
+                                    <div class="glass-panel rounded-2xl p-3 border-white/10 flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 flex items-center justify-center text-black">
+                                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                        </div>
+                                        <div class="flex-1 text-left">
+                                            <p class="text-[11px] font-bold text-white">Quantum Neural Core</p>
+                                            <p class="text-[9px] text-cyan-300">Predictive battery optimized +24%</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Widget 2: Camera Status -->
+                                    <div class="glass-panel rounded-2xl p-3 border-white/10 flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-magenta flex items-center justify-center text-white">
+                                            <i data-lucide="aperture" class="w-4 h-4"></i>
+                                        </div>
+                                        <div class="flex-1 text-left">
+                                            <p class="text-[11px] font-bold text-white">200MP Photonic Engine</p>
+                                            <p class="text-[9px] text-gray-400">RAW-8K Stream Ready</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Screen Footer Bar -->
+                                <div class="flex justify-center pb-1">
+                                    <div class="w-32 h-1 bg-white/40 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Showcase Section -->
+    <section id="features" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-xs font-mono font-bold text-accent-cyan uppercase tracking-widest">Engineering Masterpiece</h2>
+                <p class="text-3xl sm:text-5xl font-display font-bold text-white">Unrivaled Innovation in Every Layer</p>
+                <p class="text-gray-400 text-lg">Designed without compromise. Crafted to elevate human performance and creativity.</p>
+            </div>
+
+            <!-- Feature Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Performance -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 border border-cyan-500/30 flex items-center justify-center text-accent-cyan mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cpu" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2">Quantum Silicon Chip</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        World’s first 3nm neural architecture delivering 40 Teraflops of machine learning power with zero thermal throttling.
+                    </p>
+                    <div class="font-mono text-xs text-accent-cyan flex items-center space-x-1">
+                        <span>+55% CPU Speed</span>
+                        <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2: Display -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-500/10 border border-violet-500/30 flex items-center justify-center text-accent-violet mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sun" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2">3000-Nits OLED</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        6.8" Edge-to-Edge LTPO display with 1-120Hz dynamic refresh rate and true outdoor direct-sunlight clarity.
+                    </p>
+                    <div class="font-mono text-xs text-accent-violet flex items-center space-x-1">
+                        <span>Dolby Vision 2.0</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Battery & HyperCharge -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="zap" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2">120W HyperCharge</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        5500 mAh Solid-State battery system charging from 0 to 100% in under 15 minutes with dynamic thermal guard.
+                    </p>
+                    <div class="font-mono text-xs text-emerald-400 flex items-center space-x-1">
+                        <span>0-100% in 15 Min</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Aerospace Build -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2">Grade 5 Titanium</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Aerospace-grade sculpted titanium frame paired with Ceramic Shield glass for ultra-lightweight durability.
+                    </p>
+                    <div class="font-mono text-xs text-rose-400 flex items-center space-x-1">
+                        <span>IP68 Submersible</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Camera Experience Showcase -->
+    <section id="camera" class="py-24 relative z-10 bg-dark/60 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Optics Text & Lens Selector -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-3">
+                        <span class="text-xs font-mono text-accent-cyan uppercase tracking-widest">Photonic System</span>
+                        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Capture Reality in 200 Megapixels</h2>
+                        <p class="text-gray-400 text-base leading-relaxed">
+                            Switch seamlessly between 4 distinct optical focal lengths backed by our AI Photonic Engine for studio-grade photography day or night.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Camera Mode Selector Buttons -->
+                    <div class="space-y-3" id="camera-modes">
+                        <button onclick="switchCameraMode('main')" class="camera-mode-btn active w-full p-4 rounded-2xl glass-card border-accent-cyan/50 flex items-center justify-between text-left transition-all">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-xl bg-accent-cyan/20 text-accent-cyan flex items-center justify-center font-mono font-bold">200</div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">200MP Ultra-Clear Main</h4>
+                                    <p class="text-xs text-gray-400">f/1.4 aperture, 1/1.12" sensor with OIS</p>
+                                </div>
+                            </div>
+                            <i data-lucide="chevron-right" class="w-5 h-5 text-accent-cyan"></i>
+                        </button>
+
+                        <button onclick="switchCameraMode('telephoto')" class="camera-mode-btn w-full p-4 rounded-2xl glass-card flex items-center justify-between text-left transition-all">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-xl bg-violet-500/20 text-accent-violet flex items-center justify-center font-mono font-bold">10x</div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">50MP Periscope Telephoto</h4>
+                                    <p class="text-xs text-gray-400">10x Optical Zoom, 100x Digital Space Zoom</p>
+                                </div>
+                            </div>
+                            <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500"></i>
+                        </button>
+
+                        <button onclick="switchCameraMode('ultrawide')" class="camera-mode-btn w-full p-4 rounded-2xl glass-card flex items-center justify-between text-left transition-all">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-accent-blue flex items-center justify-center font-mono font-bold">122°</div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">50MP Ultra-Wide & Macro</h4>
+                                    <p class="text-xs text-gray-400">Zero-distortion field of view with 2cm macro</p>
+                                </div>
+                            </div>
+                            <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500"></i>
+                        </button>
+
+                        <button onclick="switchCameraMode('night')" class="camera-mode-btn w-full p-4 rounded-2xl glass-card flex items-center justify-between text-left transition-all">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold">NV</div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">Quantum Night Vision</h4>
+                                    <p class="text-xs text-gray-400">LiDAR AI depth mapping in ultra low light</p>
+                                </div>
+                            </div>
+                            <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Live Preview Mockup -->
+                <div class="lg:col-span-7 relative">
+                    <div class="glass-card rounded-3xl p-4 border-white/10 overflow-hidden relative shadow-2xl">
+                        <!-- Simulated Camera Viewfinder -->
+                        <div class="relative h-[420px] sm:h-[480px] rounded-2xl overflow-hidden bg-gray-950 flex items-center justify-center">
+                            
+                            <!-- Dynamic Lens Viewport Overlay Image/Graphic -->
+                            <div id="camera-viewport" class="absolute inset-0 bg-cover bg-center transition-all duration-700 scale-100" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+                            </div>
+
+                            <!-- Viewfinder Grid Lines -->
+                            <div class="absolute inset-0 grid grid-cols-3 grid-rows-3 pointer-events-none opacity-20 border border-white/30">
+                                <div class="border-r border-b border-white"></div>
+                                <div class="border-r border-b border-white"></div>
+                                <div class="border-b border-white"></div>
+                                <div class="border-r border-b border-white"></div>
+                                <div class="border-r border-b border-white"></div>
+                                <div class="border-b border-white"></div>
+                                <div class="border-r border-white"></div>
+                                <div class="border-r border-white"></div>
+                                <div></div>
+                            </div>
+
+                            <!-- Camera Focus Target Box -->
+                            <div class="w-20 h-20 border border-cyan-400/80 rounded-lg absolute flex items-center justify-center pointer-events-none animate-pulse">
+                                <div class="w-2 h-2 rounded-full bg-cyan-400"></div>
+                            </div>
+
+                            <!-- Viewfinder Overlay Details -->
+                            <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-xs font-mono text-white/80 z-10">
+                                <span class="bg-black/50 px-3 py-1 rounded-full backdrop-blur-md" id="camera-badge">RAW 200MP · 8K HDR</span>
+                                <span class="bg-black/50 px-3 py-1 rounded-full backdrop-blur-md flex items-center space-x-2">
+                                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                                    <span>REC</span>
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end z-10">
+                                <div>
+                                    <p class="text-xs font-mono text-gray-300" id="camera-iso">ISO 100 · f/1.4 · 1/2000s</p>
+                                    <h4 class="text-lg font-bold text-white font-display" id="camera-mode-title">200MP Ultra-Clear Mode</h4>
+                                </div>
+                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="triggerShutter()">
+                                    <div class="w-9 h-9 rounded-full bg-white"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Technical Specs Matrix -->
+    <section id="specs" class="py-24 relative z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-mono text-accent-cyan uppercase tracking-widest">Architectural Matrix</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Technical Specifications</h2>
+            </div>
+
+            <!-- Spec Tabs Navigation -->
+            <div class="flex overflow-x-auto space-x-2 pb-4 no-scrollbar border-b border-white/10 mb-8 justify-start sm:justify-center">
+                <button onclick="showSpecTab('spec-processor')" class="spec-tab-btn active px-6 py-3 rounded-full text-sm font-semibold transition-all whitespace-nowrap bg-gradient-to-r from-accent-cyan to-accent-blue text-black">Processor & AI</button>
+                <button onclick="showSpecTab('spec-display')" class="spec-tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all whitespace-nowrap glass-card text-gray-300 hover:text-white">Display & Touch</button>
+                <button onclick="showSpecTab('spec-battery')" class="spec-tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all whitespace-nowrap glass-card text-gray-300 hover:text-white">Battery & Power</button>
+                <button onclick="showSpecTab('spec-build')" class="spec-tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all whitespace-nowrap glass-card text-gray-300 hover:text-white">Design & Materials</button>
+            </div>
+
+            <!-- Spec Tab Content Panels -->
+            <div class="glass-card rounded-3xl p-8 border-white/10">
+                <!-- Processor Spec -->
+                <div id="spec-processor" class="spec-content space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">CHIPSET</p>
+                            <p class="text-lg font-bold text-white font-display">Quantum Silicon Bionic (3nm Process)</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">CPU CORES</p>
+                            <p class="text-lg font-bold text-white font-display">12-Core (4 Performance + 8 Efficiency)</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">NEURAL ENGINE</p>
+                            <p class="text-lg font-bold text-white font-display">32-Core AI Engine (40 NPU TOPS)</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">GRAPHICS GPU</p>
+                            <p class="text-lg font-bold text-white font-display">10-Core Ray-Tracing Accelerated GPU</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Spec -->
+                <div id="spec-display" class="spec-content hidden space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">PANEL TYPE</p>
+                            <p class="text-lg font-bold text-white font-display">6.8" Quantum OLED LTPO 4.0</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">REFRESH RATE</p>
+                            <p class="text-lg font-bold text-white font-display">1Hz - 120Hz Ultra Dynamic Adaptive</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">PEAK BRIGHTNESS</p>
+                            <p class="text-lg font-bold text-white font-display">3000 Nits Outdoor Peak Brightness</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">RESOLUTION & PPI</p>
+                            <p class="text-lg font-bold text-white font-display">3200 x 1440 Pixels (516 ppi)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battery Spec -->
+                <div id="spec-battery" class="spec-content hidden space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">BATTERY CAPACITY</p>
+                            <p class="text-lg font-bold text-white font-display">5,500 mAh Solid-State Cell</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">WIRED CHARGING</p>
+                            <p class="text-lg font-bold text-white font-display">120W HyperCharge (0-100% in 15m)</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">WIRELESS CHARGING</p>
+                            <p class="text-lg font-bold text-white font-display">50W Magnetic Wireless Pulse</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">REVERSE CHARGING</p>
+                            <p class="text-lg font-bold text-white font-display">15W Reverse Wireless Share</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Build Spec -->
+                <div id="spec-build" class="spec-content hidden space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">FRAME MATERIAL</p>
+                            <p class="text-lg font-bold text-white font-display">Grade 5 Aerospace Titanium Alloy</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">GLASS PROTECTION</p>
+                            <p class="text-lg font-bold text-white font-display">Ceramic Shield Ultra Glass Front & Back</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">WATER RESISTANCE</p>
+                            <p class="text-lg font-bold text-white font-display">IP68 (6 Meters up to 30 Mins)</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <p class="text-xs text-gray-400 font-mono">WEIGHT & THICKNESS</p>
+                            <p class="text-lg font-bold text-white font-display">189 Grams / 7.2mm Ultra Thin</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Phone Customizer & Dynamic Pricing Widget -->
+    <section id="customizer" class="py-24 relative z-10 bg-dark/80 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-mono text-accent-cyan uppercase tracking-widest">Personalize Your Device</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Configure Your Aether Phone X</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Customizer Phone Visualizer -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center space-y-8">
+                    <div class="relative w-64 sm:w-72 h-[520px] rounded-[48px] p-2 bg-gray-800 border-4 border-gray-600 shadow-2xl transition-all duration-500" id="customizer-phone-frame">
+                        <!-- Simulated Screen Color Accent Overlay -->
+                        <div id="customizer-screen" class="w-full h-full rounded-[40px] bg-gradient-to-b from-dark via-gray-950 to-dark p-6 flex flex-col justify-between items-center text-center relative overflow-hidden transition-all duration-500">
+                            
+                            <div class="w-20 h-5 bg-black rounded-full border border-white/10 mt-2"></div>
+
+                            <!-- Color Glow Particle Effect in Phone center -->
+                            <div id="phone-glow-ball" class="w-40 h-40 rounded-full blur-[60px] opacity-60 transition-all duration-500 bg-cyan-500"></div>
+
+                            <div class="space-y-2 z-10">
+                                <h4 class="text-2xl font-display font-bold text-white" id="selected-color-name">Space Black</h4>
+                                <p class="text-xs text-gray-400 font-mono" id="selected-storage-display">256GB Storage</p>
+                            </div>
+
+                            <div class="w-24 h-1 bg-white/30 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customizer Options Controls -->
+                <div class="lg:col-span-6 space-y-8 glass-card rounded-3xl p-8 border-white/10">
+                    
+                    <!-- Color Picker -->
+                    <div class="space-y-4">
+                        <label class="block text-sm font-mono text-gray-300 uppercase tracking-wider">1. Select Finish</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            
+                            <button onclick="selectColor('Space Black', '#000000', '#111827', 'black')" class="color-btn active p-3 rounded-2xl glass-card flex flex-col items-center space-y-2 border-accent-cyan transition-all">
+                                <span class="w-8 h-8 rounded-full bg-black border border-gray-700 shadow-inner"></span>
+                                <span class="text-xs text-white font-medium">Space Black</span>
+                            </button>
+
+                            <button onclick="selectColor('Stellar Silver', '#E5E7EB', '#374151', 'silver')" class="color-btn p-3 rounded-2xl glass-card flex flex-col items-center space-y-2 transition-all">
+                                <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-gray-300 to-white border border-white/50"></span>
+                                <span class="text-xs text-white font-medium">Stellar Silver</span>
+                            </button>
+
+                            <button onclick="selectColor('Deep Violet', '#8A2BE2', '#4C1D95', 'violet')" class="color-btn p-3 rounded-2xl glass-card flex flex-col items-center space-y-2 transition-all">
+                                <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-violet-900 to-accent-violet"></span>
+                                <span class="text-xs text-white font-medium">Deep Violet</span>
+                            </button>
+
+                            <button onclick="selectColor('Nebula Cyan', '#00F0FF', '#083344', 'cyan')" class="color-btn p-3 rounded-2xl glass-card flex flex-col items-center space-y-2 transition-all">
+                                <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-600 to-accent-cyan"></span>
+                                <span class="text-xs text-white font-medium">Nebula Cyan</span>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- Storage Picker -->
+                    <div class="space-y-4">
+                        <label class="block text-sm font-mono text-gray-300 uppercase tracking-wider">2. Select Capacity</label>
+                        <div class="grid grid-cols-3 gap-4">
+                            <button onclick="selectStorage(256, 999)" class="storage-btn active p-4 rounded-2xl glass-card text-center border-accent-cyan transition-all">
+                                <p class="text-lg font-bold text-white font-display">256 GB</p>
+                                <p class="text-xs text-gray-400">$999</p>
+                            </button>
+
+                            <button onclick="selectStorage(512, 1199)" class="storage-btn p-4 rounded-2xl glass-card text-center transition-all">
+                                <p class="text-lg font-bold text-white font-display">512 GB</p>
+                                <p class="text-xs text-gray-400">$1,199</p>
+                            </button>
+
+                            <button onclick="selectStorage(1024, 1399)" class="storage-btn p-4 rounded-2xl glass-card text-center transition-all">
+                                <p class="text-lg font-bold text-white font-display">1 TB</p>
+                                <p class="text-xs text-gray-400">$1,399</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Summary & Final CTA Button -->
+                    <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <p class="text-xs font-mono text-gray-400 uppercase">Total Due Today</p>
+                            <h3 class="text-4xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan to-white" id="total-price-display">$999</h3>
+                            <p class="text-xs text-emerald-400 font-medium mt-0.5">Free Express Worldwide Delivery</p>
+                        </div>
+
+                        <button onclick="openPreOrderModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-accent-cyan via-accent-blue to-accent-violet text-black font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/30 transition-all transform hover:-translate-y-0.5">
+                            Pre-Order Now
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews & Press Section -->
+    <section id="reviews" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-mono text-accent-cyan uppercase tracking-widest">Global Recognition</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-white">Acclaimed by Tech Critics</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Review Card 1 -->
+                <div class="glass-card rounded-3xl p-8 relative flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 space-x-1">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-gray-300 text-base italic leading-relaxed">
+                            "The Aether Phone X isn't just a smartphone; it feels like holding a piece of the future. The 200MP sensor coupled with Quantum AI changes computational photography forever."
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 mt-6 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-accent-cyan flex items-center justify-center font-bold">TC</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">TechCrunch</p>
+                            <p class="text-xs text-gray-400">Editor's Choice Award 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="glass-card rounded-3xl p-8 relative flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 space-x-1">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-gray-300 text-base italic leading-relaxed">
+                            "120W charging that actually takes you from empty to full in 15 minutes without overheating is a engineering marvel. Titanium chassis feels insanely light."
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 mt-6 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-violet-500/20 text-accent-violet flex items-center justify-center font-bold">TV</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">The Verge</p>
+                            <p class="text-xs text-gray-400">Score 9.8 / 10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="glass-card rounded-3xl p-8 relative flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 space-x-1">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-gray-300 text-base italic leading-relaxed">
+                            "The cleanest software aesthetics matched with sheer processing dominance. Aether has set a new benchmark for flagship mobile technology."
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 mt-6 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">MK</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">MKBHD Review</p>
+                            <p class="text-xs text-gray-400">Smartphone of the Year</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-black border-t border-white/10 py-16 relative z-10 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand & Newsletter Column -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-accent-cyan to-accent-violet p-[1px] flex items-center justify-center">
+                            <div class="w-full h-full bg-dark rounded-[7px] flex items-center justify-center">
+                                <span class="font-display font-extrabold text-sm text-white">Æ</span>
+                            </div>
+                        </div>
+                        <span class="font-display font-bold text-xl text-white tracking-widest">AETHER</span>
+                    </div>
+                    <p class="text-gray-400 max-w-sm">
+                        Stay informed on upcoming software updates, drop announcements, and exclusive ecosystem rewards.
+                    </p>
+                    <form onsubmit="handleNewsletter(event)" class="flex items-center max-w-md relative">
+                        <input type="email" id="newsletter-email" required placeholder="Enter your email address" class="w-full px-4 py-3 rounded-full bg-gray-900 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent-cyan pr-32 text-xs sm:text-sm" />
+                        <button type="submit" class="absolute right-1 px-5 py-2 rounded-full bg-accent-cyan text-black font-bold text-xs hover:bg-cyan-300 transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                    <p id="newsletter-msg" class="text-xs text-emerald-400 hidden">✓ You are subscribed to Aether Keynotes.</p>
+                </div>
+
+                <!-- Column 2: Products -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-xs uppercase font-mono tracking-wider">Ecosystem</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Aether Phone X</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Aether Pods Pro</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Aether Watch Ultra</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">AetherOS 4.0</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Support -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-xs uppercase font-mono tracking-wider">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Aether Care+</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Order Status</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Trade-In Value</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Warranty Info</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Company -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-xs uppercase font-mono tracking-wider">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Press Room</a></li>
+                        <li><a href="#" class="hover:text-accent-cyan transition-colors">Sustainability</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Socials -->
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <p class="text-xs text-gray-500">© 2026 Aether Technologies Inc. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="YouTube"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Pre-Order Modal Popup -->
+    <div id="preorder-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card rounded-3xl p-8 max-w-lg w-full border-white/10 relative space-y-6 animate-float" style="animation-duration: 0s;">
+            
+            <button onclick="closeModal('preorder-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-accent-cyan to-accent-violet p-[1px] mx-auto flex items-center justify-center">
+                    <div class="w-full h-full bg-dark rounded-[15px] flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-accent-cyan"></i>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-display font-bold text-white">Reserve Aether Phone X</h3>
+                <p class="text-xs text-gray-400">Complete your details to secure priority dispatch.</p>
+            </div>
+
+            <!-- Order Specs Summary Box -->
+            <div class="glass-panel p-4 rounded-2xl space-y-2 text-xs">
+                <div class="flex justify-between text-gray-300">
+                    <span>Model Finish:</span>
+                    <span id="modal-color" class="font-bold text-white">Space Black</span>
+                </div>
+                <div class="flex justify-between text-gray-300">
+                    <span>Storage:</span>
+                    <span id="modal-storage" class="font-bold text-white">256 GB</span>
+                </div>
+                <div class="flex justify-between text-gray-300 border-t border-white/10 pt-2 text-sm font-bold">
+                    <span>Subtotal:</span>
+                    <span id="modal-price" class="text-accent-cyan">$999</span>
+                </div>
+            </div>
+
+            <!-- Checkout Form -->
+            <form onsubmit="handlePreOrderSubmit(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Full Name</label>
+                    <input type="text" required placeholder="Alex Mercer" class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-white/10 text-white focus:outline-none focus:border-accent-cyan text-sm" />
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Email Address</label>
+                    <input type="email" required placeholder="alex@aether.io" class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-white/10 text-white focus:outline-none focus:border-accent-cyan text-sm" />
+                </div>
+                <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-accent-cyan via-accent-blue to-accent-violet text-black font-bold text-base hover:opacity-90 transition-opacity">
+                    Confirm Priority Reservation
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Keynote Video Modal Mock -->
+    <div id="keynote-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+        <div class="glass-card rounded-3xl p-6 max-w-3xl w-full border-white/10 relative space-y-4">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                <h3 class="text-lg font-bold text-white font-display">Aether Keynote Unveiling 2026</h3>
+                <button onclick="closeModal('keynote-modal')" class="text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="relative w-full h-[320px] sm:h-[400px] bg-gray-950 rounded-2xl overflow-hidden flex flex-col items-center justify-center text-center p-6 space-y-4 border border-white/10">
+                <div class="w-20 h-20 rounded-full bg-accent-cyan/20 border border-accent-cyan text-accent-cyan flex items-center justify-center animate-pulse">
+                    <i data-lucide="play" class="w-10 h-10 ml-1"></i>
+                </div>
+                <div>
+                    <p class="text-white font-bold text-lg">Aether Phone X Launch Event</p>
+                    <p class="text-xs text-gray-400">Recorded live in Cupertino, CA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Real-time Digital Clock on Phone Frame Mockup
+        function updateClock() {
+            const clockEl = document.getElementById('clock-display');
+            if (clockEl) {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                clockEl.textContent = `${hours}:${minutes}`;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // 3. 3D Tilt Effect on Hero Phone Mockup
+        const phoneHero = document.getElementById('interactive-phone');
+        if (phoneHero) {
+            document.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const innerWidth = window.innerWidth;
+                const innerHeight = window.innerHeight;
+
+                const rotateX = ((clientY / innerHeight) - 0.5) * -20;
+                const rotateY = ((clientX / innerWidth) - 0.5) * 20;
+
+                phoneHero.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+        }
+
+        // 4. Interactive Camera Mode Switching Logic
+        const cameraViewportData = {
+            main: {
+                title: '200MP Ultra-Clear Mode',
+                iso: 'ISO 100 · f/1.4 · 1/2000s',
+                badge: 'RAW 200MP · 8K HDR',
+                img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80'
+            },
+            telephoto: {
+                title: '10x Periscope Telephoto',
+                iso: 'ISO 200 · f/2.8 · 1/1000s',
+                badge: '10X OPTICAL · 100X SPACE',
+                img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80'
+            },
+            ultrawide: {
+                title: '122° Ultra-Wide & Macro',
+                iso: 'ISO 400 · f/1.8 · 1/500s',
+                badge: '122° FOV · 2CM MACRO',
+                img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'
+            },
+            night: {
+                title: 'Quantum Night Vision',
+                iso: 'ISO 3200 · f/1.4 · 1/30s',
+                badge: 'LIDAR DEPTH · NIGHT VISION',
+                img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80'
+            }
+        };
+
+        function switchCameraMode(modeKey) {
+            const data = cameraViewportData[modeKey];
+            if (!data) return;
+
+            // Update UI Button active states
+            const buttons = document.querySelectorAll('.camera-mode-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('border-accent-cyan/50');
+                btn.classList.add('border-transparent');
+            });
+
+            const currentViewport = document.getElementById('camera-viewport');
+            const modeTitle = document.getElementById('camera-mode-title');
+            const modeIso = document.getElementById('camera-iso');
+            const modeBadge = document.getElementById('camera-badge');
+
+            // Apply transition animation
+            currentViewport.style.opacity = '0.3';
+            
+            setTimeout(() => {
+                currentViewport.style.backgroundImage = `url('${data.img}')`;
+                modeTitle.textContent = data.title;
+                modeIso.textContent = data.iso;
+                modeBadge.textContent = data.badge;
+                currentViewport.style.opacity = '1';
+            }, 200);
+        }
+
+        function triggerShutter() {
+            const viewport = document.getElementById('camera-viewport');
+            viewport.style.filter = 'brightness(2) contrast(1.2)';
+            setTimeout(() => {
+                viewport.style.filter = 'none';
+            }, 150);
+        }
+
+        // 5. Technical Specifications Tab Switcher
+        function showSpecTab(tabId) {
+            const contents = document.querySelectorAll('.spec-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+
+            const buttons = document.querySelectorAll('.spec-tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-accent-cyan', 'to-accent-blue', 'text-black');
+                btn.classList.add('glass-card', 'text-gray-300');
+            });
+
+            event.currentTarget.classList.remove('glass-card', 'text-gray-300');
+            event.currentTarget.classList.add('bg-gradient-to-r', 'from-accent-cyan', 'to-accent-blue', 'text-black');
+        }
+
+        // 6. Interactive Customizer Logic (Color & Storage Customization)
+        let selectedColor = 'Space Black';
+        let selectedStorageGB = 256;
+        let currentPrice = 999;
+
+        function selectColor(colorName, colorHex, borderHex, themeKey) {
+            selectedColor = colorName;
+            document.getElementById('selected-color-name').textContent = colorName;
+
+            // Update Active Buttons
+            const buttons = document.querySelectorAll('.color-btn');
+            buttons.forEach(b => b.classList.remove('border-accent-cyan', 'active'));
+            event.currentTarget.classList.add('border-accent-cyan', 'active');
+
+            // Dynamic glow ball color update
+            const glowBall = document.getElementById('phone-glow-ball');
+            const phoneFrame = document.getElementById('customizer-phone-frame');
+
+            if (themeKey === 'black') glowBall.style.backgroundColor = '#00F0FF';
+            if (themeKey === 'silver') glowBall.style.backgroundColor = '#FFFFFF';
+            if (themeKey === 'violet') glowBall.style.backgroundColor = '#8A2BE2';
+            if (themeKey === 'cyan') glowBall.style.backgroundColor = '#00F0FF';
+
+            phoneFrame.style.borderColor = colorHex;
+        }
+
+        function selectStorage(gb, price) {
+            selectedStorageGB = gb;
+            currentPrice = price;
+
+            document.getElementById('selected-storage-display').textContent = `${gb < 1024 ? gb + 'GB' : '1TB'} Storage`;
+            document.getElementById('total-price-display').textContent = `$${price.toLocaleString()}`;
+
+            const buttons = document.querySelectorAll('.storage-btn');
+            buttons.forEach(b => b.classList.remove('border-accent-cyan', 'active'));
+            event.currentTarget.classList.add('border-accent-cyan', 'active');
+        }
+
+        // 7. Modal Handlers
+        function openPreOrderModal() {
+            document.getElementById('modal-color').textContent = selectedColor;
+            document.getElementById('modal-storage').textContent = `${selectedStorageGB < 1024 ? selectedStorageGB + ' GB' : '1 TB'}`;
+            document.getElementById('modal-price').textContent = `$${currentPrice.toLocaleString()}`;
+            openModal('preorder-modal');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handlePreOrderSubmit(e) {
+            e.preventDefault();
+            alert('🎉 Reservation Confirmed! We have sent a confirmation details email to your inbox.');
+            closeModal('preorder-modal');
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            const msg = document.getElementById('newsletter-msg');
+            msg.classList.remove('hidden');
+            document.getElementById('newsletter-email').value = '';
+        }
+
+        // 8. Ambient Background Canvas Particles Animation
+        const canvas = document.getElementById('ambient-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 50; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.onload = function() {
+            animateCanvas();
+        }
+    </script>
+</body>
+</html>
