@@ -459,50 +459,74 @@ body {
                 <li><a href="courses.html" class=""><i class="fa-solid fa-book-open"></i> Courses</a></li>
                 <li><a href="pricing.html" class=""><i class="fa-solid fa-tag"></i> Pricing</a></li>
                 <li><a href="feedback.html" class=""><i class="fa-solid fa-comments"></i> Feedback</a></li>
-                <li><a href="login.html" class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
-                <li><a href="register.html" class="btn-nav-primary "><i class="fa-solid fa-user-plus"></i> Register</a></li>
+                <li><a href="login.html" class=""><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                <li><a href="register.html" class="btn-nav-primary active"><i class="fa-solid fa-user-plus"></i> Register</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="main-content">
         <div class="section-header">
-            <h1>Student Portal Login</h1>
-            <p>Access live lectures, assignment submissions, test series, and performance trackers.</p>
+            <h1>Student Registration</h1>
+            <p>Enroll today for the upcoming academic session and secure your batch slot.</p>
         </div>
 
         <div class="form-card">
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Login successful! Welcome to the student portal.');">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Registration submitted successfully! Our counselor will reach out shortly.');">
                 <div class="form-group">
-                    <label for="login-email">Registered Email or Roll Number</label>
+                    <label for="fullname">Full Name</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="fullname" placeholder="e.g. Rahul Sharma" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
                     <div class="input-with-icon">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="text" id="login-email" placeholder="student@apexacademy.edu" required>
+                        <input type="email" id="email" placeholder="rahul@example.com" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="login-password">Password</label>
+                    <label for="phone">Phone / WhatsApp Number</label>
                     <div class="input-with-icon">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="phone" placeholder="+91 98765 43210" required>
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 0.85rem; color: var(--gray);">
-                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#" style="color: var(--primary); text-decoration: none;">Forgot Password?</a>
+                <div class="form-group">
+                    <label for="grade">Select Class / Grade</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-school"></i>
+                        <select id="grade" required>
+                            <option value="" disabled selected>Choose your class</option>
+                            <option value="class-9">Class 9 (Foundation)</option>
+                            <option value="class-10">Class 10 (Board Exam Focus)</option>
+                            <option value="class-11">Class 11 (Science / Commerce)</option>
+                            <option value="class-12">Class 12 (Board + Pre-Competitive)</option>
+                            <option value="jee-neet">JEE / NEET Dropper & Target Batch</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" placeholder="At least 8 characters" required>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
+                    <i class="fa-solid fa-user-check"></i> Complete Registration
                 </button>
             </form>
 
             <div class="form-footer">
-                New to Apex Academy? <a href="register.html">Register here</a>
+                Already registered? <a href="login.html">Log into Student Portal</a>
             </div>
         </div>
     </main>

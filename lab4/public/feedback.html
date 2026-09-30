@@ -458,8 +458,8 @@ body {
             <ul class="nav-links">
                 <li><a href="courses.html" class=""><i class="fa-solid fa-book-open"></i> Courses</a></li>
                 <li><a href="pricing.html" class=""><i class="fa-solid fa-tag"></i> Pricing</a></li>
-                <li><a href="feedback.html" class=""><i class="fa-solid fa-comments"></i> Feedback</a></li>
-                <li><a href="login.html" class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                <li><a href="feedback.html" class="active"><i class="fa-solid fa-comments"></i> Feedback</a></li>
+                <li><a href="login.html" class=""><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
                 <li><a href="register.html" class="btn-nav-primary "><i class="fa-solid fa-user-plus"></i> Register</a></li>
             </ul>
         </div>
@@ -467,44 +467,83 @@ body {
 
     <main class="main-content">
         <div class="section-header">
-            <h1>Student Portal Login</h1>
-            <p>Access live lectures, assignment submissions, test series, and performance trackers.</p>
+            <h1>Student & Parent Feedback</h1>
+            <p>Your reviews and suggestions help us continually elevate our coaching quality.</p>
         </div>
 
         <div class="form-card">
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Login successful! Welcome to the student portal.');">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for your valuable feedback! We appreciate your support.');">
                 <div class="form-group">
-                    <label for="login-email">Registered Email or Roll Number</label>
+                    <label for="feedback-name">Your Name</label>
                     <div class="input-with-icon">
-                        <i class="fa-solid fa-envelope"></i>
-                        <input type="text" id="login-email" placeholder="student@apexacademy.edu" required>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="feedback-name" placeholder="Enter your full name" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="login-password">Password</label>
+                    <label for="feedback-role">You are a:</label>
                     <div class="input-with-icon">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <i class="fa-solid fa-user-tag"></i>
+                        <select id="feedback-role" required>
+                            <option value="student">Student</option>
+                            <option value="parent">Parent / Guardian</option>
+                            <option value="alumni">Academy Alumni</option>
+                        </select>
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 0.85rem; color: var(--gray);">
-                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#" style="color: var(--primary); text-decoration: none;">Forgot Password?</a>
+                <div class="form-group">
+                    <label for="feedback-course">Course Enrolled In</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-book"></i>
+                        <select id="feedback-course" required>
+                            <option value="physics">Physics & Mechanics</option>
+                            <option value="maths">Pure Mathematics Mastery</option>
+                            <option value="chemistry">Complete Chemistry Suite</option>
+                            <option value="biology">Biology (Botany & Zoology)</option>
+                            <option value="foundation">Junior Science Foundation</option>
+                            <option value="cs">Computer Science & Python</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Overall Experience Rating</label>
+                    <div class="rating-group" id="star-rating">
+                        <i class="fa-solid fa-star active" onclick="setRating(1)"></i>
+                        <i class="fa-solid fa-star active" onclick="setRating(2)"></i>
+                        <i class="fa-solid fa-star active" onclick="setRating(3)"></i>
+                        <i class="fa-solid fa-star active" onclick="setRating(4)"></i>
+                        <i class="fa-solid fa-star active" onclick="setRating(5)"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">Your Feedback / Review Message</label>
+                    <textarea id="comments" placeholder="Tell us how our teachers helped you or where we can improve..." required></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
+                    <i class="fa-solid fa-paper-plane"></i> Submit Feedback
                 </button>
             </form>
-
-            <div class="form-footer">
-                New to Apex Academy? <a href="register.html">Register here</a>
-            </div>
         </div>
+
+        <script>
+            function setRating(stars) {
+                const iconElements = document.querySelectorAll('#star-rating i');
+                iconElements.forEach((icon, idx) => {
+                    if (idx < stars) {
+                        icon.classList.add('active');
+                        icon.style.color = '#ffb703';
+                    } else {
+                        icon.classList.remove('active');
+                        icon.style.color = '#cbd5e1';
+                    }
+                });
+            }
+        </script>
     </main>
 
     <!-- Global Footer -->

@@ -456,10 +456,10 @@ body {
                 <span>Apex Academy</span>
             </a>
             <ul class="nav-links">
-                <li><a href="courses.html" class=""><i class="fa-solid fa-book-open"></i> Courses</a></li>
+                <li><a href="courses.html" class="active"><i class="fa-solid fa-book-open"></i> Courses</a></li>
                 <li><a href="pricing.html" class=""><i class="fa-solid fa-tag"></i> Pricing</a></li>
                 <li><a href="feedback.html" class=""><i class="fa-solid fa-comments"></i> Feedback</a></li>
-                <li><a href="login.html" class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                <li><a href="login.html" class=""><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
                 <li><a href="register.html" class="btn-nav-primary "><i class="fa-solid fa-user-plus"></i> Register</a></li>
             </ul>
         </div>
@@ -467,42 +467,129 @@ body {
 
     <main class="main-content">
         <div class="section-header">
-            <h1>Student Portal Login</h1>
-            <p>Access live lectures, assignment submissions, test series, and performance trackers.</p>
+            <h1>Our Academic Programs & Courses</h1>
+            <p>Comprehensive, result-oriented coaching programs structured for conceptual clarity and top ranks.</p>
         </div>
 
-        <div class="form-card">
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Login successful! Welcome to the student portal.');">
-                <div class="form-group">
-                    <label for="login-email">Registered Email or Roll Number</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-envelope"></i>
-                        <input type="text" id="login-email" placeholder="student@apexacademy.edu" required>
+        <div class="card-grid">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-header">
+                    <span class="course-badge">Class 11 & 12</span>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Advanced Physics & Mechanics</h3>
+                    <p style="font-size: 0.85rem; opacity: 0.9;">By Prof. R. K. Verma (Ex-IITian)</p>
+                </div>
+                <div class="course-body">
+                    <p>Deep-dive into Kinematics, Electrodynamics, Thermodynamics, and Modern Physics with 3D problem visualization and daily numerical drill sheets.</p>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 8 Months</span>
+                        <span><i class="fa-solid fa-video"></i> Live + Rec.</span>
+                        <span><i class="fa-solid fa-star" style="color: #ffb703;"></i> 4.9 (420)</span>
                     </div>
+                    <a href="pricing.html" class="btn-submit" style="text-decoration: none; font-size: 0.9rem;">
+                        View Batches & Enroll
+                    </a>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-header" style="background: linear-gradient(135deg, #059669, #047857);">
+                    <span class="course-badge">Board + JEE</span>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Pure Mathematics Mastery</h3>
+                    <p style="font-size: 0.85rem; opacity: 0.9;">By Anita Sen (Gold Medalist)</p>
+                </div>
+                <div class="course-body">
+                    <p>Calculus, Coordinate Geometry, Vectors, Probability, and Algebra. Specialized shortcut techniques for competitive questions and step-by-step board presentation.</p>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 9 Months</span>
+                        <span><i class="fa-solid fa-users"></i> Small Batches</span>
+                        <span><i class="fa-solid fa-star" style="color: #ffb703;"></i> 4.9 (510)</span>
                     </div>
+                    <a href="pricing.html" class="btn-submit" style="text-decoration: none; font-size: 0.9rem; background: #059669;">
+                        View Batches & Enroll
+                    </a>
                 </div>
+            </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 0.85rem; color: var(--gray);">
-                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#" style="color: var(--primary); text-decoration: none;">Forgot Password?</a>
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-header" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">
+                    <span class="course-badge">NEET & Boards</span>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Complete Chemistry Suite</h3>
+                    <p style="font-size: 0.85rem; opacity: 0.9;">By Dr. S. K. Mukherjee</p>
                 </div>
+                <div class="course-body">
+                    <p>Inorganic NCERT line-by-line decoding, Organic reaction mechanisms with synthesis charts, and Physical Chemistry formula mastery with weekly mock tests.</p>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 8 Months</span>
+                        <span><i class="fa-solid fa-flask"></i> Lab Demonstrations</span>
+                        <span><i class="fa-solid fa-star" style="color: #ffb703;"></i> 4.8 (390)</span>
+                    </div>
+                    <a href="pricing.html" class="btn-submit" style="text-decoration: none; font-size: 0.9rem; background: #7c3aed;">
+                        View Batches & Enroll
+                    </a>
+                </div>
+            </div>
 
-                <button type="submit" class="btn-submit">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
-                </button>
-            </form>
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="course-header" style="background: linear-gradient(135deg, #d97706, #b45309);">
+                    <span class="course-badge">Class 9 & 10</span>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Junior Science Foundation</h3>
+                    <p style="font-size: 0.85rem; opacity: 0.9;">By Team Apex Faculty</p>
+                </div>
+                <div class="course-body">
+                    <p>Strong base building for NTSE, Olympiads, and School Boards. Develops analytical thinking, core fundamental logic, and exam-writing confidence.</p>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> Full Year</span>
+                        <span><i class="fa-solid fa-file-pen"></i> Bi-weekly Tests</span>
+                        <span><i class="fa-solid fa-star" style="color: #ffb703;"></i> 4.9 (640)</span>
+                    </div>
+                    <a href="pricing.html" class="btn-submit" style="text-decoration: none; font-size: 0.9rem; background: #d97706;">
+                        View Batches & Enroll
+                    </a>
+                </div>
+            </div>
 
-            <div class="form-footer">
-                New to Apex Academy? <a href="register.html">Register here</a>
+            <!-- Course 5 -->
+            <div class="course-card">
+                <div class="course-header" style="background: linear-gradient(135deg, #e11d48, #be123c);">
+                    <span class="course-badge">NEET Target</span>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Biology (Botany & Zoology)</h3>
+                    <p style="font-size: 0.85rem; opacity: 0.9;">By Dr. Priya Saxena</p>
+                </div>
+                <div class="course-body">
+                    <p>High-yield diagram training, NCERT exemplar problem solving, mnemonics for memorization, and chapter-wise 10-year past paper drill series.</p>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 7 Months</span>
+                        <span><i class="fa-solid fa-dna"></i> 360/360 Focus</span>
+                        <span><i class="fa-solid fa-star" style="color: #ffb703;"></i> 5.0 (480)</span>
+                    </div>
+                    <a href="pricing.html" class="btn-submit" style="text-decoration: none; font-size: 0.9rem; background: #e11d48;">
+                        View Batches & Enroll
+                    </a>
+                </div>
+            </div>
+
+            <!-- Course 6 -->
+            <div class="course-card">
+                <div class="course-header" style="background: linear-gradient(135deg, #0284c7, #0369a1);">
+                    <span class="course-badge">Class 11-12</span>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Computer Science & Python</h3>
+                    <p style="font-size: 0.85rem; opacity: 0.9;">By Er. Vivek Agrawal</p>
+                </div>
+                <div class="course-body">
+                    <p>Python Programming, SQL queries, Data structures, Computer Networks, and practical board project guidance with hands-on coding exercises.</p>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 6 Months</span>
+                        <span><i class="fa-solid fa-laptop-code"></i> 100% Practical</span>
+                        <span><i class="fa-solid fa-star" style="color: #ffb703;"></i> 4.8 (310)</span>
+                    </div>
+                    <a href="pricing.html" class="btn-submit" style="text-decoration: none; font-size: 0.9rem; background: #0284c7;">
+                        View Batches & Enroll
+                    </a>
+                </div>
             </div>
         </div>
     </main>

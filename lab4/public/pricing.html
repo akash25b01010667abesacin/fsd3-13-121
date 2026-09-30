@@ -457,9 +457,9 @@ body {
             </a>
             <ul class="nav-links">
                 <li><a href="courses.html" class=""><i class="fa-solid fa-book-open"></i> Courses</a></li>
-                <li><a href="pricing.html" class=""><i class="fa-solid fa-tag"></i> Pricing</a></li>
+                <li><a href="pricing.html" class="active"><i class="fa-solid fa-tag"></i> Pricing</a></li>
                 <li><a href="feedback.html" class=""><i class="fa-solid fa-comments"></i> Feedback</a></li>
-                <li><a href="login.html" class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                <li><a href="login.html" class=""><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
                 <li><a href="register.html" class="btn-nav-primary "><i class="fa-solid fa-user-plus"></i> Register</a></li>
             </ul>
         </div>
@@ -467,43 +467,76 @@ body {
 
     <main class="main-content">
         <div class="section-header">
-            <h1>Student Portal Login</h1>
-            <p>Access live lectures, assignment submissions, test series, and performance trackers.</p>
+            <h1>Transparent Tuition Fee Plans</h1>
+            <p>Affordable, value-driven investment in your child's academic future. No hidden charges.</p>
         </div>
 
-        <div class="form-card">
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Login successful! Welcome to the student portal.');">
-                <div class="form-group">
-                    <label for="login-email">Registered Email or Roll Number</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-envelope"></i>
-                        <input type="text" id="login-email" placeholder="student@apexacademy.edu" required>
-                    </div>
-                </div>
+        <div class="card-grid">
+            <!-- Plan 1 -->
+            <div class="pricing-card">
+                <h3 style="font-size: 1.3rem;">Single Subject Plan</h3>
+                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 0.25rem;">Ideal for targeted subject mastery</p>
+                <div class="price-value">₹1,999 <span>/ month</span></div>
+                
+                <ul class="price-features">
+                    <li><i class="fa-solid fa-check"></i> 1 Subject of your choice</li>
+                    <li><i class="fa-solid fa-check"></i> 3 Live classes per week</li>
+                    <li><i class="fa-solid fa-check"></i> Chapter-wise printed notes (PDF)</li>
+                    <li><i class="fa-solid fa-check"></i> Bi-weekly chapter tests</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark"></i> 1-on-1 personal mentorship</li>
+                    <li class="disabled"><i class="fa-solid fa-xmark"></i> Full mock test series</li>
+                </ul>
 
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
-                    </div>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 0.85rem; color: var(--gray);">
-                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#" style="color: var(--primary); text-decoration: none;">Forgot Password?</a>
-                </div>
-
-                <button type="submit" class="btn-submit">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
-                </button>
-            </form>
-
-            <div class="form-footer">
-                New to Apex Academy? <a href="register.html">Register here</a>
+                <a href="register.html" class="btn-submit" style="text-decoration: none; background: #e2e8f0; color: #1e293b;">
+                    Choose Subject
+                </a>
             </div>
+
+            <!-- Plan 2 (Featured) -->
+            <div class="pricing-card featured">
+                <span class="popular-tag">MOST POPULAR</span>
+                <h3 style="font-size: 1.3rem; color: var(--primary);">PCM / PCB Combo</h3>
+                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 0.25rem;">Comprehensive 3-subject coaching package</p>
+                <div class="price-value">₹4,999 <span>/ month</span></div>
+                
+                <ul class="price-features">
+                    <li><i class="fa-solid fa-check"></i> All 3 Core Subjects (Physics, Chem, Math/Bio)</li>
+                    <li><i class="fa-solid fa-check"></i> 6 Live classes per week (2 hrs/day)</li>
+                    <li><i class="fa-solid fa-check"></i> Printed module courier to doorstep</li>
+                    <li><i class="fa-solid fa-check"></i> Weekly All-India level test series</li>
+                    <li><i class="fa-solid fa-check"></i> Dedicated doubt sessions every Saturday</li>
+                    <li><i class="fa-solid fa-check"></i> Parent-teacher monthly progress review</li>
+                </ul>
+
+                <a href="register.html" class="btn-submit" style="text-decoration: none;">
+                    Enroll in Combo Batch
+                </a>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="pricing-card">
+                <h3 style="font-size: 1.3rem;">Apex Achievers (1-on-1)</h3>
+                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 0.25rem;">Personalized IIT-JEE / NEET Top 100 Ranker Program</p>
+                <div class="price-value">₹9,999 <span>/ month</span></div>
+                
+                <ul class="price-features">
+                    <li><i class="fa-solid fa-check"></i> Custom curriculum & personalized pace</li>
+                    <li><i class="fa-solid fa-check"></i> Personal Ex-IITian / Doctor mentor</li>
+                    <li><i class="fa-solid fa-check"></i> 24/7 instant WhatsApp doubt clearance</li>
+                    <li><i class="fa-solid fa-check"></i> Full past 15-year paper solving drills</li>
+                    <li><i class="fa-solid fa-check"></i> Mental conditioning & exam strategy</li>
+                    <li><i class="fa-solid fa-check"></i> Guaranteed score improvement tracker</li>
+                </ul>
+
+                <a href="register.html" class="btn-submit" style="text-decoration: none; background: #e2e8f0; color: #1e293b;">
+                    Apply for Mentorship
+                </a>
+            </div>
+        </div>
+
+        <div style="background: var(--white); border-radius: 12px; padding: 1.5rem; margin-top: 3rem; text-align: center; border: 1px dashed var(--primary);">
+            <h4 style="color: var(--primary-dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-gift"></i> Early Bird & Merit Scholarships</h4>
+            <p style="color: var(--gray); font-size: 0.95rem;">Students scoring 90%+ in previous school exams are eligible for up to <strong>30% waiver</strong> on full session fees. Contact our counselor via registration.</p>
         </div>
     </main>
 
